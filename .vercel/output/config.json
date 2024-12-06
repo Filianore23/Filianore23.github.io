@@ -1,0 +1,346 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "/404/",
+			"headers": {
+				"Location": "/404"
+			},
+			"status": 308
+		},
+		{
+			"src": "/about/",
+			"headers": {
+				"Location": "/about"
+			},
+			"status": 308
+		},
+		{
+			"src": "/archives/",
+			"headers": {
+				"Location": "/archives"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog/([^/]+?)/",
+			"headers": {
+				"Location": "/blog/$1"
+			},
+			"status": 308
+		},
+		{
+			"src": "/blog(?:\\/(.*?))?/",
+			"headers": {
+				"Location": "/blog/$1"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/advanced/optimize/",
+			"headers": {
+				"Location": "/docs/advanced/optimize"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/advanced/thanks/",
+			"headers": {
+				"Location": "/docs/advanced/thanks"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/advanced/update/",
+			"headers": {
+				"Location": "/docs/advanced/update"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/DocsLayout/",
+			"headers": {
+				"Location": "/docs/DocsLayout"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/advanced/",
+			"headers": {
+				"Location": "/docs/integrations/advanced"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/code/",
+			"headers": {
+				"Location": "/docs/integrations/code"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/comment/",
+			"headers": {
+				"Location": "/docs/integrations/comment"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/components/",
+			"headers": {
+				"Location": "/docs/integrations/components"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/links/",
+			"headers": {
+				"Location": "/docs/integrations/links"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/integrations/others/",
+			"headers": {
+				"Location": "/docs/integrations/others"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/list/",
+			"headers": {
+				"Location": "/docs/list"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/setup/configuration/",
+			"headers": {
+				"Location": "/docs/setup/configuration"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/setup/content/",
+			"headers": {
+				"Location": "/docs/setup/content"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/setup/deployment/",
+			"headers": {
+				"Location": "/docs/setup/deployment"
+			},
+			"status": 308
+		},
+		{
+			"src": "/docs/setup/getting-started/",
+			"headers": {
+				"Location": "/docs/setup/getting-started"
+			},
+			"status": 308
+		},
+		{
+			"src": "/links/",
+			"headers": {
+				"Location": "/links"
+			},
+			"status": 308
+		},
+		{
+			"src": "/projects/",
+			"headers": {
+				"Location": "/projects"
+			},
+			"status": 308
+		},
+		{
+			"src": "/search/",
+			"headers": {
+				"Location": "/search"
+			},
+			"status": 308
+		},
+		{
+			"src": "/tags/([^/]+?)(?:\\/(.*?))?/",
+			"headers": {
+				"Location": "/tags/$1/$2"
+			},
+			"status": 308
+		},
+		{
+			"src": "/tags/",
+			"headers": {
+				"Location": "/tags"
+			},
+			"status": 308
+		},
+		{
+			"src": "/terms/copyright/",
+			"headers": {
+				"Location": "/terms/copyright"
+			},
+			"status": 308
+		},
+		{
+			"src": "/terms/disclaimer/",
+			"headers": {
+				"Location": "/terms/disclaimer"
+			},
+			"status": 308
+		},
+		{
+			"src": "/terms/list/",
+			"headers": {
+				"Location": "/terms/list"
+			},
+			"status": 308
+		},
+		{
+			"src": "/terms/privacy-policy/",
+			"headers": {
+				"Location": "/terms/privacy-policy"
+			},
+			"status": 308
+		},
+		{
+			"src": "/terms/terms-and-conditions/",
+			"headers": {
+				"Location": "/terms/terms-and-conditions"
+			},
+			"status": 308
+		},
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_image$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/404$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/about$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/advanced\\/optimize$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/advanced\\/thanks$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/advanced\\/update$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/contents$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/DocsLayout$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/advanced$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/code$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/comment$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/components$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/links$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/integrations\\/others$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/setup\\/configuration$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/setup\\/content$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/setup\\/deployment$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/docs\\/setup\\/getting-started$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/links$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/projects$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/robots\\.txt$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/rss\\.xml$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/tags$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/terms\\/copyright$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/terms\\/disclaimer$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/terms\\/list$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/terms\\/privacy-policy$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/terms\\/terms-and-conditions$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "_render"
+		},
+		{
+			"src": "/.*",
+			"dest": "_render",
+			"status": 404
+		}
+	]
+}
