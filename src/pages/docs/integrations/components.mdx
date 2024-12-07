@@ -1,0 +1,301 @@
+---
+layout: '@/pages/docs/DocsLayout.astro'
+
+title: 'User Components'
+description: 'Easily extend your content page more interactive'
+---
+
+import { Aside, Tabs, TabItem } from '@/components/user'
+
+Components let you easily reuse a piece of UI or styling consistently. You can use them not just in `.astro` files, but also in `.mdx` files.
+
+<Aside type='tip'>
+[MDX](https://mdxjs.com/) is a format that lets you write JSX embedded inside Markdown. And it has no difference with markdown files in other ways.
+</Aside>
+
+For `.astro`, you can directly import and use components and use. An example will shown in the first section.
+
+## Container
+
+### Card
+
+<Tabs>
+<TabItem label='MDX'>
+```jsx
+import { Card } from '@/components/user'
+
+<Card
+  as='a'
+  href='#card'
+  heading='Lorem ipsum'
+  subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei.'
+  date='August 2021'
+>
+  You can even contain a list here
+</Card>
+```
+</TabItem>
+<TabItem label='Astro'>
+```astro
+---
+import { Card } from '@/components/user'
+---
+<!-- ... -->
+<Card
+  as='a'
+  href='#card'
+  heading='Lorem ipsum'
+  subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei.'
+  date='August 2021'
+>
+  You can even contain a list here
+</Card>
+```
+</TabItem>
+</Tabs>
+
+Renders:
+
+import { Card } from '@/components/user'
+
+<Card
+  as='a'
+  href='#card'
+  heading='Lorem ipsum'
+  subheading='Lorem ipsum dolor sit amet, vidit suscipit at mei.'
+  date='August 2021'
+>
+  You can even contain a list here
+</Card>
+
+### Collapse
+
+```jsx
+import { Collapse } from '@/components/user'
+
+<Collapse title='Lorem ipsum'> Lorem ipsum dolor sit amet, vidit suscipit at mei. </Collapse>
+```
+
+Renders:
+
+import { Collapse } from '@/components/user'
+
+<Collapse title='Lorem ipsum'>Lorem ipsum dolor sit amet, vidit suscipit at mei.</Collapse>
+<Collapse title='Lorem ipsum'>
+  <div slot='before'>Are you sure you want to see?</div>
+  <div>Lorem ipsum dolor sit amet, vidit suscipit at mei.</div>
+</Collapse>
+
+### Aside
+
+```jsx
+import { Aside } from '@/components/user'
+
+<Aside>No type selected will default to 'note'. 😉</Aside>
+<Aside type="tip">
+Other content is also supported in aside! 😍
+
+// ```js
+// A code snippet, for example.
+// ```
+</Aside>
+<Aside type='caution' title='You should know it!'>Is your code buggy again? 🤨</Aside>
+<Aside type="danger">Have you used `rm -rf` to clean your computer? 😡</Aside>
+```
+
+Renders:
+
+<Aside>No type selected will default to 'note'. 😉</Aside>
+<Aside type="tip">
+Other content is also supported in aside! 😍
+
+```js
+// A code snippet, for example.
+```
+</Aside>
+<Aside type='caution' title='You should know it!'>Is your code buggy again? 🤨</Aside>
+<Aside type="danger">Have you used `rm -rf` to clean your computer? 😡</Aside>
+
+This component also has a remark support version (which can directly use in `.md`), but not integrated in this theme. You can check [packages/starlight/index.ts](https://github.com/withastro/starlight/blob/main/packages/starlight/integrations/asides.ts) for reference code.
+
+```md
+:::tip
+This theme author is a good guy.
+:::
+```
+
+### Tabs
+
+```jsx
+import { Tabs, TabItem } from '@/components/user';
+
+<Tabs>
+  <TabItem label="Stars">Sirius, Vega, Betelgeuse</TabItem>
+  <TabItem label="Moons">Io, Europa, Ganymede</TabItem>
+</Tabs>
+```
+
+Renders:
+
+<Tabs>
+  <TabItem label="Stars">Sirius, Vega, Betelgeuse</TabItem>
+  <TabItem label="Moons">Io, Europa, Ganymede</TabItem>
+</Tabs>
+
+## List
+
+### CardList
+
+```jsx
+import { CardList } from '@/components/user'
+
+<CardList title='A list' list={
+  [{title: 'I am hidden!'}]
+} collapse />
+<CardList title='A list' list={
+  [
+    { title: 'Lorem ipsum', link: '#' },
+    { title: 'Dolor sit amet', children: [{
+      title: 'Vidit suscipit', link: '#'
+    }] }
+  ]
+} />
+```
+
+Renders:
+
+import { CardList } from '@/components/user'
+
+<CardList title='A list' list={
+  [{title: 'I am hidden!'}]
+} collapse />
+<CardList title='A list' list={
+  [
+    { title: 'Lorem ipsum', link: '#' },
+    { title: 'Dolor sit amet', children: [{
+      title: 'Vidit suscipit', link: '#'
+    }] }
+  ]
+} />
+
+### Timeline
+
+```jsx
+import { Timeline } from '@/components/user'
+
+<Timeline events={
+  [
+    { date: 'August 2021', content: 'Hello' },
+    { date: 'August 2022', content: '<i>World!</i>' },
+  ]
+} />
+```
+
+Renders:
+
+import { Timeline } from '@/components/user'
+
+<Timeline events={
+  [
+    { date: 'August 2021', content: 'Hello' },
+    { date: 'August 2022', content: '<i>World!</i>' },
+  ]
+} />
+
+### Steps
+
+```jsx
+import { Steps } from '@/components/user'
+
+How to Yi Jian San Lian:
+
+<Steps>
+1. Dian Zan
+2. Tou Bi
+3. Shou Cang
+</Steps>
+```
+
+Renders:
+
+import { Steps } from '@/components/user'
+
+How to Yi Jian San Lian:
+
+<Steps>
+1. Dian Zan
+2. Tou Bi
+3. Shou Cang
+</Steps>
+
+## Simple Text Render
+
+### Button
+
+```jsx
+import { Button } from '@/components/user'
+
+<div class='flex gap-x-2'>
+  <Button as='div' title='Simple' />
+  <Button as='a' href='#button' title='Link style' style='ahead' class='not-prose' />
+  <Button as='div' title='Back' style='back' />
+  <Button as='div' title='Pill style' style='pill' />
+  <Button as='div' style='pill'><i>Italic</i></Button>
+</div>
+```
+
+Renders:
+
+import { Button } from '@/components/user'
+
+<div class='flex gap-x-2'>
+  <Button as='div' title='Simple' />
+  <Button as='a' href='#button' title='Link style' style='ahead' class='not-prose' />
+  <Button as='div' title='Back' style='back' />
+  <Button as='div' title='Pill style' style='pill' />
+  <Button as='div' style='pill'><i>Italic</i></Button>
+</div>
+
+### Spoiler
+
+```jsx
+import { Spoiler } from '@/components/user'
+
+<Spoiler>No one can find me.</Spoiler> But I am exposed here.
+```
+
+Renders:
+
+import { Spoiler } from '@/components/user'
+
+<Spoiler>No one can find me.</Spoiler> But I am exposed here.
+
+### Formatted Date
+
+```jsx
+import { FormattedDate } from '@/components/user'
+
+<FormattedDate date={new Date('2021-08-01')} dateTimeOptions={{ month: 'short' }} />
+```
+
+Renders:
+
+import { FormattedDate } from '@/components/user'
+
+<FormattedDate date={new Date('2021-08-01')} dateTimeOptions={{ month: 'short' }} />
+
+### Label
+
+```jsx
+import { Label } from '@/components/user'
+
+<Label title='Hello' />
+```
+
+Renders:
+
+import { Label } from '@/components/user'
+
+<Label title='Hello' />
+
+There's also some [Advanced Components](/docs/integrations/advanced), which may suit for you. Hope you enjoy using these components!

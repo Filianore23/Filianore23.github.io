@@ -1,0 +1,58 @@
+---
+import type { SiteMeta } from '@/types'
+
+import BaseHead from '@/components/BaseHead.astro'
+import Footer from '@/components/layout/Footer.astro'
+import Header from '@/components/layout/Header.astro'
+import ThemeProvider from '@/components/layout/ThemeProvider.astro'
+import { siteConfig } from '@/site-config'
+
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseLayout /> component.
+import '@/assets/styles/app.css'
+
+interface Props {
+  meta: SiteMeta
+  highlightColor?: string
+}
+
+const {
+  meta: { articleDate, description = siteConfig.description, ogImage, title },
+  highlightColor
+} = Astro.props
+---
+
+<html lang={siteConfig.lang}>
+  <head>
+    <BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
+    <ThemeProvider />
+  </head>
+
+  <body class='flex justify-center bg-background transition-colors'>
+    {
+      highlightColor && highlightColor != 'hsl(var(--primary) / var(--tw-text-opacity))' && (
+        <>
+          <div
+            class='pointer-events-none absolute start-0 top-0 z-0 h-1/2 w-full opacity-25'
+            style={{ backgroundImage: `linear-gradient(${highlightColor}, transparent)` }}
+          />
+          <style define:vars={{ highlightColor }}>
+            :global(.highlight) {
+              color: var(--highlightColor) !important;
+            }
+            :global(.highlight-bg) {
+              background-color: var(--highlightColor) !important;
+            }
+          </style>
+        </>
+      )
+    }
+    <main
+      class='z-10 flex min-h-screen w-screen max-w-[70rem] flex-col items-center px-4 pb-10 text-[0.92rem] leading-relaxed sm:px-7 lg:px-10'
+    >
+      <Header />
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>
